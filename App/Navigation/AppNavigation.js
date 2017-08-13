@@ -3,6 +3,7 @@ import * as Colors from './Styles/NavigationStyles'
 import LaunchScreen from '../Containers/LaunchScreen'
 import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen'
 import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings'
+import DrawerView from './Drawer/DrawerView';
 
 /* SCREEN DECLARATIONS */
 const screens = [
@@ -12,7 +13,7 @@ const screens = [
 
 /* GLOBAL NAVBAR OPTIONS */
 const navigationOptions = ({ navigation }) =>
-  getNavigationOptionsWithAction(Colors.headerBg, 'white', getNavBarIcon(navigation))
+  getNavigationOptionsWithAction(Colors.headerBg, Colors.headerTitleColor, getNavBarIcon(navigation, '#00c583'))
 
 /* App navigation factory */
 const navigationFactory = (screens, navigationOptions) => {
@@ -39,7 +40,7 @@ const navigationFactory = (screens, navigationOptions) => {
   return StackNavigator({
     Drawer: {
       name: 'Drawer',
-      screen: DrawerNavigator(drawerRoutes)
+      screen: DrawerNavigator(drawerRoutes, { contentComponent: DrawerView })
     },
     ...stackRoutes
   }, {
