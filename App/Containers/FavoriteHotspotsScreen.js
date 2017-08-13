@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView } from 'react-native'
+import { FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import { getNavigationOptionsWithAction, getNavBarIcon } from '../Navigation/HeaderBarSettings/navBarSettings'
 
 // Styles
 import styles from './Styles/FavoriteHotspotsScreenStyle'
+import ListItem from '../Components/ListItem';
 
 class FavoriteHotspotsScreen extends Component {
   static propTypes = {}
@@ -15,19 +16,224 @@ class FavoriteHotspotsScreen extends Component {
       title: 'Favorite Hotspots'
     }))
 
+  _keyExtractor = (item, index) => index; //todo switch to id
+
   render () {
     return (
-      <ScrollView style={styles.container}>
-        <KeyboardAvoidingView behavior='position'>
-          <Text>FavoriteHotspotsScreen Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus culpa deleniti dicta dolor, dolore eaque facere magnam, nam, nostrum numquam officiis quam quidem ullam voluptatem? Autem dolore harum magni. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi exercitationem laudantium quas. Adipisci alias beatae, earum esse explicabo, id ipsum, labore libero numquam quae saepe tempore tenetur voluptate! Suscipit! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur fugiat minus modi, natus nesciunt perspiciatis quas vel. Ad aperiam consequatur dolore, dolores fugiat illum in ipsum modi nemo quia!</Text>
-        </KeyboardAvoidingView>
-      </ScrollView>
+      <FlatList
+        style={styles.container}
+        keyExtractor={this._keyExtractor}
+        data={this.props.favoriteHotspots}
+        renderItem={({item}) => <ListItem {...item} icon={'heart'} iconColor={'#ff6969'} />}
+      />
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    favoriteHotspots: [
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+      {
+        title: 'UPC Unirii 2',
+        secureConnectionType: 'WPA2 Secured Wi-Fi',
+        distance: '5 m'
+      },
+    ],
   }
 }
 

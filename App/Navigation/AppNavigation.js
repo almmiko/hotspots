@@ -7,8 +7,8 @@ import AllHotspotsScreen from '../Containers/AllHotspotsScreen'
 
 /* SCREEN DECLARATIONS */
 const screens = [
-  {name: 'AllHotspotsScreen', component: AllHotspotsScreen},
   {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen},
+  {name: 'AllHotspotsScreen', component: AllHotspotsScreen},
 ]
 
 /* GLOBAL NAVBAR OPTIONS */

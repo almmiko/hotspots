@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 40,
     borderColor: '#00a287',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    justifyContent: 'space-between'
   },
   focused: {},
   itemText: {
