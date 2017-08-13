@@ -1,18 +1,52 @@
-import { StackNavigator } from 'react-navigation'
+import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import * as Colors from './Styles/NavigationStyles'
 import LaunchScreen from '../Containers/LaunchScreen'
+import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen'
+import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings'
 
-import styles from './Styles/NavigationStyles'
+/* SCREEN DECLARATIONS */
+const screens = [
+  {name: 'LaunchScreen', component: LaunchScreen},
+  {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen}
+]
 
-// Manifest of possible screens
-const PrimaryNav = StackNavigator({
-  LaunchScreen: { screen: LaunchScreen }
-}, {
-  // Default config for all screens
-  headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
-  navigationOptions: {
-    headerStyle: styles.header
+/* GLOBAL NAVBAR OPTIONS */
+const navigationOptions = ({ navigation }) =>
+  getNavigationOptionsWithAction(Colors.headerBg, 'white', getNavBarIcon(navigation))
+
+/* App navigation factory */
+const navigationFactory = (screens, navigationOptions) => {
+  const routesPrefix = {
+    STACK: 'STACK'
   }
-})
+
+  const stackRoutes = {}
+  const drawerRoutes = {}
+
+  screens.forEach((screen) => {
+    let stackScreenRoutesName = `${screen.name}${routesPrefix.STACK}`
+
+    stackRoutes[stackScreenRoutesName] = {screen: screen.component}
+
+    drawerRoutes[screen.name] = {
+      name: screen.name,
+      screen:
+        StackNavigator(stackRoutes,
+          { initialRouteName: stackScreenRoutesName, navigationOptions })
+    }
+  })
+
+  return StackNavigator({
+    Drawer: {
+      name: 'Drawer',
+      screen: DrawerNavigator(drawerRoutes)
+    },
+    ...stackRoutes
+  }, {
+    headerMode: 'none'
+  })
+}
+
+const PrimaryNav = navigationFactory(screens, navigationOptions)
 
 export default PrimaryNav
