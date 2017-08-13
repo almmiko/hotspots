@@ -3,12 +3,12 @@ import * as Colors from './Styles/NavigationStyles'
 import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen'
 import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings'
 import DrawerView from './Drawer/DrawerView';
-import AllHotspotsScreen from '../Containers/AllHotspotsScreen'
+import AllHotspotsListScreen from '../Containers/AllHotspotsListScreen'
 
 /* SCREEN DECLARATIONS */
 const screens = [
+  {name: 'AllHotspotsListScreen', component: AllHotspotsListScreen},
   {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen},
-  {name: 'AllHotspotsScreen', component: AllHotspotsScreen},
 ]
 
 /* GLOBAL NAVBAR OPTIONS */

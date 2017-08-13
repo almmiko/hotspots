@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#36b97f',
-    fontWeight: '400'
+    fontWeight: '400',
+    fontSize: 16
   },
   connectionType: {
     color: '#707070',
