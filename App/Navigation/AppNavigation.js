@@ -1,14 +1,14 @@
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import * as Colors from './Styles/NavigationStyles'
-import LaunchScreen from '../Containers/LaunchScreen'
 import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen'
 import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings'
 import DrawerView from './Drawer/DrawerView';
+import AllHotspotsScreen from '../Containers/AllHotspotsScreen'
 
 /* SCREEN DECLARATIONS */
 const screens = [
-  {name: 'LaunchScreen', component: LaunchScreen},
-  {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen}
+  {name: 'AllHotspotsScreen', component: AllHotspotsScreen},
+  {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen},
 ]
 
 /* GLOBAL NAVBAR OPTIONS */
