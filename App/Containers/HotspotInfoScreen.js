@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, KeyboardAvoidingView } from 'react-native';
+import { Header } from 'react-navigation';
 import { connect } from 'react-redux';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -9,7 +10,8 @@ import styles from './Styles/HotspotInfoScreenStyle';
 
 class HotspotInfoScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    header: () => <View><Text>aweomse</Text></View>,
+    title: navigation.state.params.data.title,
+    header: props => <Header {...props} />,
   });
 
   render() {

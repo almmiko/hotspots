@@ -12,7 +12,7 @@ const ListItem = (props) => {
       style={styles.row}
       activeOpacity={0.8}
       onPress={() => {
-        navigate('HotspotInfoScreen');
+        navigate('HotspotInfoScreen', { data: props });
       }}
     >
       <Icon style={styles.icon} name={icon} size={20} color={iconColor} />

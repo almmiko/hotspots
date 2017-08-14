@@ -57,7 +57,9 @@ const navigationFactory = (screens, navOpt, stackComponentsScreens) => {
       ...stackRoutes,
     },
     {
-      headerMode: 'none',
+      navigationOptions: {
+        header: null,
+      },
     },
   );
 };
