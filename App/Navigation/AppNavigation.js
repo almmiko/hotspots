@@ -1,53 +1,67 @@
-import { StackNavigator, DrawerNavigator } from 'react-navigation'
-import * as Colors from './Styles/NavigationStyles'
-import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen'
-import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings'
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
+import * as Colors from './Styles/NavigationStyles';
+import FavoriteHotspotsScreen from '../Containers/FavoriteHotspotsScreen';
+import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettings/navBarSettings';
 import DrawerView from './Drawer/DrawerView';
-import AllHotspotsListScreen from '../Containers/AllHotspotsListScreen'
+import AllHotspotsListScreen from '../Containers/AllHotspotsListScreen';
+import HotspotInfoScreen from '../Containers/HotspotInfoScreen';
 
 /* SCREEN DECLARATIONS */
-const screens = [
-  {name: 'AllHotspotsListScreen', component: AllHotspotsListScreen},
-  {name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen},
-]
+const generalScreens = [
+  { name: 'AllHotspotsListScreen', component: AllHotspotsListScreen },
+  { name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen },
+];
+
+const stackScreens = [{ name: 'HotspotInfoScreen', component: HotspotInfoScreen }];
 
 /* GLOBAL NAVBAR OPTIONS */
 const navigationOptions = ({ navigation }) =>
-  getNavigationOptionsWithAction(Colors.headerBg, Colors.headerTitleColor, getNavBarIcon(navigation, '#00c583'))
+  getNavigationOptionsWithAction(
+    Colors.headerBg,
+    Colors.headerTitleColor,
+    getNavBarIcon(navigation, '#00c583'),
+  );
 
 /* APP NAVIGATION FACTORY */
-const navigationFactory = (screens, navigationOptions) => {
+const navigationFactory = (screens, navOpt, stackComponentsScreens) => {
   const routesPrefix = {
-    STACK: 'STACK'
-  }
+    STACK: 'STACK',
+  };
 
-  const stackRoutes = {}
-  const drawerRoutes = {}
+  const stackRoutes = {};
+  const drawerRoutes = {};
 
   screens.forEach((screen) => {
-    let stackScreenRoutesName = `${screen.name}${routesPrefix.STACK}`
+    const stackScreenRoutesName = `${screen.name}${routesPrefix.STACK}`;
 
-    stackRoutes[stackScreenRoutesName] = {screen: screen.component}
+    stackRoutes[stackScreenRoutesName] = { screen: screen.component };
 
     drawerRoutes[screen.name] = {
       name: screen.name,
-      screen:
-        StackNavigator(stackRoutes,
-          { initialRouteName: stackScreenRoutesName, navigationOptions })
-    }
-  })
+      screen: StackNavigator(stackRoutes, { initialRouteName: stackScreenRoutesName, navOpt }),
+    };
+  });
 
-  return StackNavigator({
-    Drawer: {
-      name: 'Drawer',
-      screen: DrawerNavigator(drawerRoutes, { contentComponent: DrawerView })
+  if (stackComponentsScreens && stackComponentsScreens.length > 0) {
+    stackComponentsScreens.forEach((screen) => {
+      stackRoutes[screen.name] = { screen: screen.component };
+    });
+  }
+
+  return StackNavigator(
+    {
+      Drawer: {
+        name: 'Drawer',
+        screen: DrawerNavigator(drawerRoutes, { contentComponent: DrawerView }),
+      },
+      ...stackRoutes,
     },
-    ...stackRoutes
-  }, {
-    headerMode: 'none'
-  })
-}
+    {
+      headerMode: 'none',
+    },
+  );
+};
 
-const PrimaryNav = navigationFactory(screens, navigationOptions)
+const PrimaryNav = navigationFactory(generalScreens, navigationOptions, stackScreens);
 
-export default PrimaryNav
+export default PrimaryNav;
