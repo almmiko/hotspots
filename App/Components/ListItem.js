@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ListItem = (props) => {
-
   const { icon, iconColor, title, secureConnectionType, distance } = props;
 
   return (
@@ -34,21 +33,21 @@ const styles = StyleSheet.create({
   title: {
     color: '#36b97f',
     fontWeight: '400',
-    fontSize: 16
+    fontSize: 16,
   },
   connectionType: {
     color: '#707070',
-    fontSize: 12
+    fontSize: 12,
   },
   info: {
-    width: '70%'
+    width: '70%',
   },
   icon: {
-    width: '15%'
+    width: '15%',
   },
   distance: {
-    width: '13%'
-  }
+    width: '13%',
+  },
 });
 
 ListItem.propTypes = {};
