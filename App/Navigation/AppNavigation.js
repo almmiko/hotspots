@@ -15,7 +15,7 @@ const screens = [
 const navigationOptions = ({ navigation }) =>
   getNavigationOptionsWithAction(Colors.headerBg, Colors.headerTitleColor, getNavBarIcon(navigation, '#00c583'))
 
-/* App navigation factory */
+/* APP NAVIGATION FACTORY */
 const navigationFactory = (screens, navigationOptions) => {
   const routesPrefix = {
     STACK: 'STACK'

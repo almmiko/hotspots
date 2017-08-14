@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "ecmaFeatures": {
+    "defaultParams": true
+  },
+  "rules": {
+    "no-trailing-spaces": "off",
+    "import/no-named-as-default": "off",
+    // A jsx extension is not required for files containing jsx
+    "react/jsx-filename-extension": 0,
+    // This rule struggles with flow and class properties
+    "react/sort-comp": 0,
+    // ignore linebreak style. the CRLF / LF endings wont matter
+    // if a windows user correctly converts CRLF to LF upon commits otherwise
+    // there are errors every line.
+    "linebreak-style": 0,
+    "import/prefer-default-export": "off"
+  }
+}

@@ -17,12 +17,8 @@
     "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
     "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
     "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
-    "precommit": "npm run git-hook",
-    "prepush": "npm run git-hook",
-    "git-hook": "npm run lint -s && npm run test -s",
-    "lint": "standard --verbose | snazzy",
-    "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
-    "fixcode": "standard --fix"
+    "precommit": "lint-staged",
+    "lint": "eslint App"
   },
   "dependencies": {
     "apisauce": "^0.14.0",
@@ -64,8 +60,32 @@
     "reactotron-react-native": "^1.12.0",
     "reactotron-redux": "^1.11.1",
     "reactotron-redux-saga": "^1.11.1",
-    "snazzy": "^7.0.0",
-    "standard": "10.0.2"
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-loader": "6.4.1",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-inline-elements": "6.22.0",
+    "babel-plugin-transform-react-jsx-self": "6.22.0",
+    "babel-plugin-transform-react-jsx-source": "6.22.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.4.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-3": "6.24.1",
+    "babel-template": "6.24.1",
+    "enzyme-to-json": "1.5.1",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.3",
+    "file-loader": "0.11.1",
+    "flow-bin": "^0.49.1",
+    "flow-typed": "^2.1.2",
+    "lint-staged": "3.4.0",
+    "prettier": "1.2.2",
+    "prettier-eslint": "5.1.0",
+    "prettier-eslint-cli": "3.4.1"
   },
   "jest": {
     "testMatch": [
@@ -81,20 +101,10 @@
     ],
     "preset": "react-native"
   },
-  "config": {},
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "describe",
-      "test",
-      "jest",
-      "expect",
-      "fetch",
-      "navigator",
-      "__DEV__",
-      "XMLHttpRequest",
-      "FormData",
-      "React$Element"
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
     ]
   }
 }
