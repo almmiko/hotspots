@@ -9,11 +9,6 @@ import { connect } from 'react-redux';
 import styles from './Styles/HotspotInfoScreenStyle';
 
 class HotspotInfoScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.data.title,
-    header: props => <Header {...props} />,
-  });
-
   render() {
     return (
       <ScrollView style={styles.container}>

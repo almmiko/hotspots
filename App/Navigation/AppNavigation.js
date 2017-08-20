@@ -5,6 +5,7 @@ import { getNavigationOptionsWithAction, getNavBarIcon } from './HeaderBarSettin
 import DrawerView from './Drawer/DrawerView';
 import AllHotspotsListScreen from '../Containers/AllHotspotsListScreen';
 import HotspotInfoScreen from '../Containers/HotspotInfoScreen';
+import withHeaderWrapper from '../Containers/HOC/withHeaderWrapper';
 
 /* SCREEN DECLARATIONS */
 const generalScreens = [
@@ -12,7 +13,9 @@ const generalScreens = [
   { name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen },
 ];
 
-const stackScreens = [{ name: 'HotspotInfoScreen', component: HotspotInfoScreen }];
+const stackScreens = [
+  { name: 'HotspotInfoScreen', component: withHeaderWrapper(HotspotInfoScreen) },
+];
 
 /* GLOBAL NAVBAR OPTIONS */
 const navigationOptions = ({ navigation }) =>
