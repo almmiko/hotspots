@@ -3,28 +3,43 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const ListItem = (props) => {
-  const { icon, iconColor, title, secureConnectionType, distance } = props;
-  const { navigate } = props.navigation;
+class ListItem extends React.PureComponent {
+  state = {
+    disabledButton: false,
+  };
 
-  return (
-    <TouchableOpacity
-      style={styles.row}
-      activeOpacity={0.8}
-      onPress={() => {
-        navigate('HotspotInfoScreen', { data: props });
-      }}
-    >
-      <Icon style={styles.icon} name={icon} size={20} color={iconColor} />
-      <View style={styles.info}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.connectionType}>{secureConnectionType}</Text>
-      </View>
-      <Text style={styles.distance}>{distance}</Text>
-      <Icon style={styles.info} name={'angle-right'} size={20} color={'#36b97f'} />
-    </TouchableOpacity>
-  );
-};
+  preventDoubleNav = () => {
+    this.setState({ disabledButton: true });
+    setTimeout(() => {
+      this.setState({ disabledButton: false });
+    }, 2000);
+  };
+
+  render() {
+    const { icon, iconColor, title, secureConnectionType, distance } = this.props;
+    const { navigate } = this.props.navigation;
+
+    return (
+      <TouchableOpacity
+        disabled={this.state.disabledButton}
+        style={styles.row}
+        activeOpacity={0.8}
+        onPress={() => {
+          this.preventDoubleNav();
+          navigate('HotspotInfoScreen', { data: this.props });
+        }}
+      >
+        <Icon style={styles.icon} name={icon} size={20} color={iconColor} />
+        <View style={styles.info}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.connectionType}>{secureConnectionType}</Text>
+        </View>
+        <Text style={styles.distance}>{distance}</Text>
+        <Icon style={styles.info} name={'angle-right'} size={20} color={'#36b97f'} />
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   row: {
