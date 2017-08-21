@@ -6,9 +6,11 @@ import DrawerView from './Drawer/DrawerView';
 import AllHotspotsListScreen from '../Containers/AllHotspotsListScreen';
 import HotspotInfoScreen from '../Containers/HotspotInfoScreen';
 import withHeaderWrapper from '../Containers/HOC/withHeaderWrapper';
+import AllHotspotsMapScreen from '../Containers/AllHotspotsMapScreen';
 
 /* SCREEN DECLARATIONS */
 const generalScreens = [
+  { name: 'AllHotspotsMapScreen', component: AllHotspotsMapScreen },
   { name: 'AllHotspotsListScreen', component: AllHotspotsListScreen },
   { name: 'FavoriteHotspotsScreen', component: FavoriteHotspotsScreen },
 ];
