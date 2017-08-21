@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
+import Modal from 'react-native-modalbox';
 import {
   getNavigationOptionsWithAction,
   getNavBarIcon,
 } from '../Navigation/HeaderBarSettings/navBarSettings';
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import Button from '../Components/Button';
 
 // Styles
 import styles from './Styles/AllHotspotsMapScreenStyle';
@@ -26,6 +26,8 @@ class AllHotspotsScreen extends Component {
   state = {
     forceMapRerender: 1,
   };
+
+  modal = null;
 
   componentWillMount() {
     setTimeout(
@@ -60,14 +62,35 @@ class AllHotspotsScreen extends Component {
           }}
         />
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            onPress={() => navigate('AllHotspotsListScreen')}
-            activeOpacity={0.7}
-            style={styles.button}
-          >
-            <Text style={styles.buttonText}>View hotspots list</Text>
-          </TouchableOpacity>
+          <Button
+            // onPress={() => navigate('AllHotspotsListScreen')}
+            onPress={() => this.modal.open()}
+            text="View hotspots list"
+          />
         </View>
+
+        <Modal
+          style={styles.modal}
+          backdropOpacity={0.3}
+          position={'bottom'}
+          ref={(r) => {
+            this.modal = r;
+          }}
+        >
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>Connect to UPC Unirii 2</Text>
+            <Text style={styles.modalSubTitle}>
+              Please insert the password in order to connect.
+            </Text>
+            <TextInput style={styles.input} secureTextEntry />
+            <Button
+              styles={[styles.modalBtn, { marginTop: 30 }]}
+              text="Connect"
+              onPress={() => {}}
+            />
+            <Button styles={styles.modalBtn} text="Add Hotspot to Favorites" onPress={() => {}} />
+          </View>
+        </Modal>
       </View>
     );
   }

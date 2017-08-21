@@ -14,19 +14,33 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     backgroundColor: 'transparent',
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: '400',
-    fontSize: 18,
+  input: {
+    width: '75%',
+    textAlign: 'center',
+    marginVertical: 10,
   },
-  button: {
-    width: '80%',
-    paddingVertical: 20,
+  modalTitle: {
+    color: '#36b97f',
+    fontWeight: '400',
+    fontSize: 19,
+    marginBottom: 3,
+  },
+  modalBtn: {
+    marginBottom: 12,
+  },
+  modalSubTitle: {
+    color: '#707070',
+    fontWeight: '400',
+    fontSize: 12,
+  },
+  modal: {
+    height: 350,
+    backgroundColor: 'rgba(255, 255, 255, .9)',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 20,
-    opacity: 0.85,
-    backgroundColor: '#36b97f',
-    borderRadius: 8,
   },
 });
 
