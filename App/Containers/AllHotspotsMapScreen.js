@@ -8,9 +8,11 @@ import {
   getNavBarIcon,
 } from '../Navigation/HeaderBarSettings/navBarSettings';
 import Button from '../Components/Button';
+import Images from '../Themes/Images';
 
 // Styles
 import styles from './Styles/AllHotspotsMapScreenStyle';
+import Tooltip from '../Components/Tooltip';
 
 class AllHotspotsScreen extends Component {
   static navigationOptions = ({ navigation }) =>
@@ -55,12 +57,21 @@ class AllHotspotsScreen extends Component {
           zoomEnabled
           rotateEnabled
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitude: 50.401699,
+            longitude: 30.252508,
+            latitudeDelta: 0.5,
+            longitudeDelta: 0.5,
           }}
-        />
+        >
+          <MapView.Marker
+            image={Images.markerBlue}
+            coordinate={{ latitude: 50.439816, longitude: 30.467643 }}
+          >
+            <MapView.Callout tooltip onPress={() => this.modal.open()}>
+              <Tooltip text="sf" title="sdf" />
+            </MapView.Callout>
+          </MapView.Marker>
+        </MapView>
         <View style={styles.buttonContainer}>
           <Button
             // onPress={() => navigate('AllHotspotsListScreen')}
